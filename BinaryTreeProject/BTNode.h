@@ -12,6 +12,8 @@ public:
 
 	BTNode(int Element);
 
+	void PrintRecursive(BTNode* Root);
+
 	~BTNode();
 
 };
