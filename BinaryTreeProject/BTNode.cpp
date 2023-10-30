@@ -38,6 +38,32 @@ void BTNode::PrintRecursive(BTNode* Root)
 	PrintRecursive(Root->RHChild);
 }
 
+BTNode* BTNode::TakeInputRecursive()
+{
+	int RootData;
+
+	std::cout << "What is the data for this node?\n";
+
+	std::cin >> RootData;
+
+	if (RootData == -1)
+	{
+		return NULL;
+	}
+
+	BTNode* NewRoot = new BTNode(RootData);
+
+	BTNode* LeftChild = TakeInputRecursive();
+	BTNode* RightChild = TakeInputRecursive();
+
+	NewRoot->LHChild = LeftChild;
+	NewRoot->RHChild = RightChild;
+	
+
+	return NewRoot;
+
+}
+
 BTNode::~BTNode()
 {
 	delete LHChild;

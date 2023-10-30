@@ -14,6 +14,8 @@ public:
 
 	void PrintRecursive(BTNode* Root);
 
+	BTNode* TakeInputRecursive();
+
 	~BTNode();
 
 };

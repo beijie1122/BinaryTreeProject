@@ -13,6 +13,8 @@ int main()
 
 	BTTest->RHChild = RHTest;
 
+	BTTest = BTTest->TakeInputRecursive();
+
 	BTTest->PrintRecursive(BTTest);
 
 	BTTest->~BTNode();
