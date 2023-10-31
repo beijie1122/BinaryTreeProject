@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <queue>
 class BTNode
 {
 public:
@@ -15,6 +16,8 @@ public:
 	void PrintRecursive(BTNode* Root);
 
 	BTNode* TakeInputRecursive();
+
+	BTNode* TakeInputLevelWise();
 
 	~BTNode();
 

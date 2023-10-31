@@ -53,15 +53,59 @@ BTNode* BTNode::TakeInputRecursive()
 
 	BTNode* NewRoot = new BTNode(RootData);
 
-	BTNode* LeftChild = TakeInputRecursive();
-	BTNode* RightChild = TakeInputRecursive();
-
-	NewRoot->LHChild = LeftChild;
-	NewRoot->RHChild = RightChild;
-	
+	NewRoot->LHChild = TakeInputRecursive();
+	NewRoot->RHChild = TakeInputRecursive();
 
 	return NewRoot;
 
+}
+
+BTNode* BTNode::TakeInputLevelWise()
+{
+	int input;
+	std::queue<BTNode*> LevelWiseQueue;
+
+	std::cout << "What is the Root Data: \n";
+	std::cin >> input;
+
+	BTNode* NewRoot = new BTNode(input);
+
+	LevelWiseQueue.push(NewRoot);
+
+	while (!LevelWiseQueue.empty())
+	{
+		BTNode* FrontNode = LevelWiseQueue.front();
+		LevelWiseQueue.pop();
+
+		std::cout << "What is the LH Child of " << FrontNode->Data << ":\n";
+		int LHData;
+		std::cin >> LHData;
+
+		if (LHData != -1)
+		{
+			//1) Generate Node 2) Push to Queue 3) Connect to root/previous nodes
+			BTNode* GenLHChild = new BTNode(LHData);
+			LevelWiseQueue.push(GenLHChild);
+			FrontNode->LHChild = GenLHChild;
+		}
+
+		std::cout << "What is the RH Child of "<< FrontNode->Data << ":\n";
+		int RHData;
+		std::cin >> RHData;
+
+		if (RHData != -1)
+		{
+			//1) Generate Node 2) Push to Queue 3) Connect to root/previous nodes
+			BTNode* GenRHChild = new BTNode(RHData);
+			LevelWiseQueue.push(GenRHChild);
+			FrontNode->RHChild = GenRHChild;
+		}
+
+	}
+
+	return NewRoot;
+
+	return nullptr;
 }
 
 BTNode::~BTNode()

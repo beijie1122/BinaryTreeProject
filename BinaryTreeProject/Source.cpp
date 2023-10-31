@@ -13,7 +13,9 @@ int main()
 
 	BTTest->RHChild = RHTest;
 
-	BTTest = BTTest->TakeInputRecursive();
+	//BTTest = BTTest->TakeInputRecursive();
+
+	BTTest = BTTest->TakeInputLevelWise();
 
 	BTTest->PrintRecursive(BTTest);
 
