@@ -78,6 +78,32 @@ void BTNode::LevelOrderTraversal(BTNode* Root)
 	}
 }
 
+int BTNode::CountNodes(BTNode* Root)
+{
+	if (Root == NULL)
+	{
+		return 0;
+	}
+
+	return CountNodes(Root->LHChild) + CountNodes(Root->RHChild) + 1;
+}
+
+void BTNode::InOrderTraversal(BTNode* Root)
+{
+	if (Root == NULL)
+	{
+		return;
+	}
+
+	InOrderTraversal(Root->LHChild); //Left
+
+	std::cout << Root->Data; //Data
+
+	InOrderTraversal(Root->RHChild); //Right
+
+
+}
+
 BTNode* BTNode::TakeInputRecursive()
 {
 	int RootData;

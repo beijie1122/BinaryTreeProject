@@ -17,6 +17,10 @@ public:
 
 	void LevelOrderTraversal(BTNode* Root);
 
+	int CountNodes(BTNode* Root);
+
+	void InOrderTraversal(BTNode* Root);
+
 	BTNode* TakeInputRecursive();
 
 	BTNode* TakeInputLevelWise();

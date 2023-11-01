@@ -24,6 +24,10 @@ int main()
 
 	BTTest->LevelOrderTraversal(BTTest);
 
+	int CountNodes = BTTest->CountNodes(BTTest);
+
+	std::cout << "The number of nodes in your tree is: " << CountNodes << "\n";
+
 	BTTest->~BTNode();
 
 	return 0;
