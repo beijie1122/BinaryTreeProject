@@ -15,6 +15,8 @@ public:
 
 	void PrintRecursive(BTNode* Root);
 
+	void LevelOrderTraversal(BTNode* Root);
+
 	BTNode* TakeInputRecursive();
 
 	BTNode* TakeInputLevelWise();

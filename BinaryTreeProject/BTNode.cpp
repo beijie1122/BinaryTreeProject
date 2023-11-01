@@ -38,6 +38,46 @@ void BTNode::PrintRecursive(BTNode* Root)
 	PrintRecursive(Root->RHChild);
 }
 
+void BTNode::LevelOrderTraversal(BTNode* Root)
+{
+	std::queue<BTNode*> TraversalQueue;
+
+	TraversalQueue.push(Root);
+	TraversalQueue.push(NULL);
+
+	//std::cout << "The Root value is " << Root->Data << "\n";
+
+	while (!TraversalQueue.empty())
+	{
+		BTNode* First = TraversalQueue.front();
+		TraversalQueue.pop();
+
+		if (First == NULL)
+		{
+			std::cout << "\n";
+			if (!TraversalQueue.empty())
+			{
+				TraversalQueue.push(NULL);
+			}
+		}
+		else
+		{
+			std::cout << First->Data << ": ";
+
+
+			if (First->LHChild)
+			{
+				TraversalQueue.push(First->LHChild);
+			}
+
+			if (First->RHChild)
+			{
+				TraversalQueue.push(First->RHChild);
+			}
+		}
+	}
+}
+
 BTNode* BTNode::TakeInputRecursive()
 {
 	int RootData;
