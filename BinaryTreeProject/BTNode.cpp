@@ -104,6 +104,94 @@ void BTNode::InOrderTraversal(BTNode* Root)
 
 }
 
+void BTNode::PreOrderTraversal(BTNode* Root)
+{
+	if (Root == NULL)
+	{
+		return;
+	}
+
+	std::cout << Root->Data; //Data 
+
+	PreOrderTraversal(Root->LHChild); //Left 
+
+	PreOrderTraversal(Root->RHChild); //Right
+
+}
+
+void BTNode::PostOrderTraversal(BTNode* Root)
+{
+	if (Root == NULL)
+	{
+		return;
+	}
+
+	PostOrderTraversal(Root->LHChild);
+
+	PostOrderTraversal(Root->RHChild);
+
+	std::cout << Root->Data;
+}
+
+int BTNode::BTHeight(BTNode* Root)
+{
+	if (Root == NULL)
+	{
+		return 0;
+	}
+
+	int LHHeight = BTHeight(Root->LHChild);
+	int RHHEight = BTHeight(Root->RHChild) ;
+
+	return std::max(LHHeight, RHHEight) + 1;
+
+}
+
+bool BTNode::SymmetricHelperFunct(BTNode* Left, BTNode* Right)
+{
+	if (Left == NULL && Right != NULL)
+	{
+		return false;
+	}
+	if (Left != NULL && Right == NULL)
+	{
+		return false;
+	}
+	if (Left == NULL && Right == NULL)
+	{
+		return true;
+	}
+	if (Left->Data != Right->Data)
+	{
+		return false;
+	}
+
+	return SymmetricHelperFunct(Left->LHChild, Right->RHChild) &&
+		SymmetricHelperFunct(Left->RHChild, Right->LHChild);
+
+}
+
+bool BTNode::SymmetricBT(BTNode* Root)
+{
+	if (Root == NULL)
+	{
+		return true;
+	}
+	
+	return SymmetricHelperFunct(Root->LHChild, Root->RHChild);
+	
+}
+
+bool BTNode::IsValueinBT(BTNode* Root, int Value)
+{
+	if (Root->Data == Value)
+	{
+		return true;
+	}
+
+
+}
+
 BTNode* BTNode::TakeInputRecursive()
 {
 	int RootData;

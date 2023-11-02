@@ -21,6 +21,18 @@ public:
 
 	void InOrderTraversal(BTNode* Root);
 
+	void PreOrderTraversal(BTNode* Root);
+
+	void PostOrderTraversal(BTNode* Root);
+
+	int BTHeight(BTNode* Root);
+
+	bool SymmetricHelperFunct(BTNode* Left, BTNode* Right);
+
+	bool SymmetricBT(BTNode* Root);
+
+	bool IsValueinBT(BTNode* Root, int Value);
+
 	BTNode* TakeInputRecursive();
 
 	BTNode* TakeInputLevelWise();
