@@ -184,12 +184,17 @@ bool BTNode::SymmetricBT(BTNode* Root)
 
 bool BTNode::IsValueinBT(BTNode* Root, int Value)
 {
+	if (Root == NULL)
+	{
+		return false;
+	}
+
 	if (Root->Data == Value)
 	{
 		return true;
 	}
 
-
+	return IsValueinBT(Root->LHChild, Value) || IsValueinBT(Root->RHChild, Value);
 }
 
 BTNode* BTNode::TakeInputRecursive()
