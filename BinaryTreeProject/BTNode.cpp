@@ -188,13 +188,67 @@ bool BTNode::IsValueinBT(BTNode* Root, int Value)
 	{
 		return false;
 	}
-
-	if (Root->Data == Value)
+	else if (Root->Data == Value)
 	{
 		return true;
 	}
+	else
+	{
+		return (IsValueinBT(Root->LHChild, Value) || IsValueinBT(Root->RHChild, Value));
+	}
+}
 
-	return IsValueinBT(Root->LHChild, Value) || IsValueinBT(Root->RHChild, Value);
+int BTNode::MinValue(BTNode* Root)
+{
+
+	if (Root == NULL)
+	{
+		//std::cout << "ERROR";
+		return INT_MAX;
+	}
+	
+	int MinValueInt = Root->Data;
+
+	int LeftMin = MinValue(Root->LHChild);
+	int RightMin = MinValue(Root->RHChild);
+
+	MinValueInt = std::min(MinValueInt, std::min(LeftMin, RightMin));
+
+	return MinValueInt;
+}
+
+void BTNode::MinValueVer2(BTNode* Root, int& ans)
+{
+	if (Root == NULL)
+	{
+		return;
+	}
+
+	ans = std::min(ans, Root->Data);
+
+	MinValueVer2(Root->LHChild, ans);
+	MinValueVer2(Root->RHChild, ans);
+
+
+
+}
+
+int BTNode::MaxValue(BTNode* Root)
+{
+	if (Root == NULL)
+	{
+		//std::cout << "ERROR";
+		return INT_MIN;
+	}
+
+	int MaxValueInt = Root->Data;
+
+	int LeftMax = MaxValue(Root->LHChild);
+	int RightMax = MaxValue(Root->RHChild);
+
+	MaxValueInt = std::max(MaxValueInt, std::max(LeftMax, RightMax));
+
+	return MaxValueInt;
 }
 
 BTNode* BTNode::TakeInputRecursive()

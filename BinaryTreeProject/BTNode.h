@@ -33,6 +33,12 @@ public:
 
 	bool IsValueinBT(BTNode* Root, int Value);
 
+	int MinValue(BTNode* Root);
+
+	void MinValueVer2(BTNode* Root, int& ans);
+
+	int MaxValue(BTNode* Root);
+
 	BTNode* TakeInputRecursive();
 
 	BTNode* TakeInputLevelWise();
